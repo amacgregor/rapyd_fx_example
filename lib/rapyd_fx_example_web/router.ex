@@ -18,6 +18,7 @@ defmodule RapydFxExampleWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+    get "/testing", TestingController, :index
   end
 
   # Other scopes may use custom stacks.
