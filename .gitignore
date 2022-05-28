@@ -32,3 +32,4 @@ rapyd_fx_example-*.tar
 npm-debug.log
 /assets/node_modules/
 
+config/dev.exs
