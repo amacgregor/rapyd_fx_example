@@ -1,0 +1,5 @@
+<h1>Edit Beneficiary</h1>
+
+<%= render "form.html", Map.put(assigns, :action, Routes.beneficiary_path(@conn, :update, @beneficiary)) %>
+
+<span><%= link "Back", to: Routes.beneficiary_path(@conn, :index) %></span>

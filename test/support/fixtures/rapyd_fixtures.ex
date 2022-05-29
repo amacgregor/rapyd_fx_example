@@ -19,4 +19,21 @@ defmodule RapydFxExample.RapydFixtures do
 
     wallet
   end
+
+  @doc """
+  Generate a beneficiary.
+  """
+  def beneficiary_fixture(attrs \\ %{}) do
+    {:ok, beneficiary} =
+      attrs
+      |> Enum.into(%{
+        currency: "some currency",
+        first_name: "some first_name",
+        last_name: "some last_name",
+        uuid: "some uuid"
+      })
+      |> RapydFxExample.Rapyd.create_beneficiary()
+
+    beneficiary
+  end
 end

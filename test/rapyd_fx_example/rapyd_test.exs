@@ -60,4 +60,64 @@ defmodule RapydFxExample.RapydTest do
       assert %Ecto.Changeset{} = Rapyd.change_wallet(wallet)
     end
   end
+
+  describe "beneficiaries" do
+    alias RapydFxExample.Rapyd.Beneficiary
+
+    import RapydFxExample.RapydFixtures
+
+    @invalid_attrs %{currency: nil, first_name: nil, last_name: nil, uuid: nil}
+
+    test "list_beneficiaries/0 returns all beneficiaries" do
+      beneficiary = beneficiary_fixture()
+      assert Rapyd.list_beneficiaries() == [beneficiary]
+    end
+
+    test "get_beneficiary!/1 returns the beneficiary with given id" do
+      beneficiary = beneficiary_fixture()
+      assert Rapyd.get_beneficiary!(beneficiary.id) == beneficiary
+    end
+
+    test "create_beneficiary/1 with valid data creates a beneficiary" do
+      valid_attrs = %{currency: "some currency", first_name: "some first_name", last_name: "some last_name", uuid: "some uuid"}
+
+      assert {:ok, %Beneficiary{} = beneficiary} = Rapyd.create_beneficiary(valid_attrs)
+      assert beneficiary.currency == "some currency"
+      assert beneficiary.first_name == "some first_name"
+      assert beneficiary.last_name == "some last_name"
+      assert beneficiary.uuid == "some uuid"
+    end
+
+    test "create_beneficiary/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Rapyd.create_beneficiary(@invalid_attrs)
+    end
+
+    test "update_beneficiary/2 with valid data updates the beneficiary" do
+      beneficiary = beneficiary_fixture()
+      update_attrs = %{currency: "some updated currency", first_name: "some updated first_name", last_name: "some updated last_name", uuid: "some updated uuid"}
+
+      assert {:ok, %Beneficiary{} = beneficiary} = Rapyd.update_beneficiary(beneficiary, update_attrs)
+      assert beneficiary.currency == "some updated currency"
+      assert beneficiary.first_name == "some updated first_name"
+      assert beneficiary.last_name == "some updated last_name"
+      assert beneficiary.uuid == "some updated uuid"
+    end
+
+    test "update_beneficiary/2 with invalid data returns error changeset" do
+      beneficiary = beneficiary_fixture()
+      assert {:error, %Ecto.Changeset{}} = Rapyd.update_beneficiary(beneficiary, @invalid_attrs)
+      assert beneficiary == Rapyd.get_beneficiary!(beneficiary.id)
+    end
+
+    test "delete_beneficiary/1 deletes the beneficiary" do
+      beneficiary = beneficiary_fixture()
+      assert {:ok, %Beneficiary{}} = Rapyd.delete_beneficiary(beneficiary)
+      assert_raise Ecto.NoResultsError, fn -> Rapyd.get_beneficiary!(beneficiary.id) end
+    end
+
+    test "change_beneficiary/1 returns a beneficiary changeset" do
+      beneficiary = beneficiary_fixture()
+      assert %Ecto.Changeset{} = Rapyd.change_beneficiary(beneficiary)
+    end
+  end
 end

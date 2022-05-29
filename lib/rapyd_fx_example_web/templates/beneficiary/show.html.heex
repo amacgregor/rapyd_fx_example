@@ -1,0 +1,28 @@
+<h1>Show Beneficiary</h1>
+
+<ul>
+
+  <li>
+    <strong>First name:</strong>
+    <%= @beneficiary.first_name %>
+  </li>
+
+  <li>
+    <strong>Last name:</strong>
+    <%= @beneficiary.last_name %>
+  </li>
+
+  <li>
+    <strong>Currency:</strong>
+    <%= @beneficiary.currency %>
+  </li>
+
+  <li>
+    <strong>Uuid:</strong>
+    <%= @beneficiary.uuid %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.beneficiary_path(@conn, :edit, @beneficiary) %></span> |
+<span><%= link "Back", to: Routes.beneficiary_path(@conn, :index) %></span>

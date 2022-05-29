@@ -1,0 +1,32 @@
+<h1>Listing Beneficiaries</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Currency</th>
+      <th>Uuid</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for beneficiary <- @beneficiaries do %>
+    <tr>
+      <td><%= beneficiary.first_name %></td>
+      <td><%= beneficiary.last_name %></td>
+      <td><%= beneficiary.currency %></td>
+      <td><%= beneficiary.uuid %></td>
+
+      <td>
+        <span><%= link "Show", to: Routes.beneficiary_path(@conn, :show, beneficiary) %></span>
+        <span><%= link "Edit", to: Routes.beneficiary_path(@conn, :edit, beneficiary) %></span>
+        <span><%= link "Delete", to: Routes.beneficiary_path(@conn, :delete, beneficiary), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Beneficiary", to: Routes.beneficiary_path(@conn, :new) %></span>
