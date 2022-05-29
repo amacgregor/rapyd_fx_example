@@ -1,0 +1,23 @@
+<h1>Show Wallet</h1>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @wallet.name %>
+  </li>
+
+  <li>
+    <strong>Ewallet:</strong>
+    <%= @wallet.ewallet_id %>
+  </li>
+
+  <li>
+    <strong>Url:</strong>
+    <%= @wallet.url %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.wallet_path(@conn, :edit, @wallet) %></span> |
+<span><%= link "Back", to: Routes.wallet_path(@conn, :index) %></span>
