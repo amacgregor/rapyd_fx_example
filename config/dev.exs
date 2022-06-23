@@ -10,6 +10,11 @@ config :rapyd_fx_example, RapydFxExample.Repo,
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
 
+
+config :rapyd_fx_example,
+  rapyd_access_key: "3254446E6E46E9ADE23D",
+  rapyd_secret_key: "7930a0c66464717f327296db2bb01233dea2e43ce7fc14defd359464e0ad279107452af5ca668661"
+
 # For development, we disable any cache and enable
 # debugging and code reloading.
 #

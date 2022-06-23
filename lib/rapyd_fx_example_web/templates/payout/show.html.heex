@@ -1,0 +1,38 @@
+<h1>Show Payout</h1>
+
+<ul>
+
+  <li>
+    <strong>Beneficiary:</strong>
+    <%= @payout.beneficiary %>
+  </li>
+
+  <li>
+    <strong>Beneficiary entity type:</strong>
+    <%= @payout.beneficiary_entity_type %>
+  </li>
+
+  <li>
+    <strong>Payout amount:</strong>
+    <%= @payout.payout_amount %>
+  </li>
+
+  <li>
+    <strong>Payout currency:</strong>
+    <%= @payout.payout_currency %>
+  </li>
+
+  <li>
+    <strong>Ewallet:</strong>
+    <%= @payout.ewallet_id %>
+  </li>
+
+  <li>
+    <strong>Payout transaction:</strong>
+    <%= @payout.payout_transaction %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.payout_path(@conn, :edit, @payout) %></span> |
+<span><%= link "Back", to: Routes.payout_path(@conn, :index) %></span>

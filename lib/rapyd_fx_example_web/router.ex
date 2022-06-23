@@ -21,6 +21,11 @@ defmodule RapydFxExampleWeb.Router do
     get "/testing", TestingController, :index
     resources "/wallets", WalletController
     resources "/beneficiaries", BeneficiaryController
+    resources "/payouts", PayoutController
+    get "/payouts/confirm/:id", PayoutController, :confirm
+    get "/payouts/complete/:id", PayoutController, :complete
+    get "/payouts-check", PayoutController, :check
+    get "/payouts-retrieve", PayoutController, :retrieve
   end
 
   # Other scopes may use custom stacks.

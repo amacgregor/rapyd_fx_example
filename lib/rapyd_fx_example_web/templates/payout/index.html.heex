@@ -1,0 +1,37 @@
+<h1>Listing Payouts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Beneficiary</th>
+      <th>Beneficiary entity type</th>
+      <th>Payout amount</th>
+      <th>Payout currency</th>
+      <th>Ewallet</th>
+      <th>Payout transaction</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for payout <- @payouts do %>
+    <tr>
+      <td><%= payout.beneficiary %></td>
+      <td><%= payout.beneficiary_entity_type %></td>
+      <td><%= payout.payout_amount %></td>
+      <td><%= payout.payout_currency %></td>
+      <td><%= payout.ewallet_id %></td>
+      <td><%= payout.payout_transaction %></td>
+
+      <td>
+        <span><%= link "Show", to: Routes.payout_path(@conn, :show, payout) %></span>
+        <span><%= link "Confirm", to: Routes.payout_path(@conn, :confirm, payout) %></span>
+        <span><%= link "Complete", to: Routes.payout_path(@conn, :complete, payout) %></span>
+        <span><%= link "Delete", to: Routes.payout_path(@conn, :delete, payout), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Payout", to: Routes.payout_path(@conn, :new) %></span>

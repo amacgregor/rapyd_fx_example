@@ -120,4 +120,190 @@ defmodule RapydFxExample.RapydTest do
       assert %Ecto.Changeset{} = Rapyd.change_beneficiary(beneficiary)
     end
   end
+
+  describe "payouts" do
+    alias RapydFxExample.Rapyd.Payout
+
+    import RapydFxExample.RapydFixtures
+
+    @invalid_attrs %{beneficiary: nil, beneficiary_entity_type: nil, payout_amount: nil, payout_currency: nil}
+
+    test "list_payouts/0 returns all payouts" do
+      payout = payout_fixture()
+      assert Rapyd.list_payouts() == [payout]
+    end
+
+    test "get_payout!/1 returns the payout with given id" do
+      payout = payout_fixture()
+      assert Rapyd.get_payout!(payout.id) == payout
+    end
+
+    test "create_payout/1 with valid data creates a payout" do
+      valid_attrs = %{beneficiary: "some beneficiary", beneficiary_entity_type: "some beneficiary_entity_type", payout_amount: 120.5, payout_currency: "some payout_currency"}
+
+      assert {:ok, %Payout{} = payout} = Rapyd.create_payout(valid_attrs)
+      assert payout.beneficiary == "some beneficiary"
+      assert payout.beneficiary_entity_type == "some beneficiary_entity_type"
+      assert payout.payout_amount == 120.5
+      assert payout.payout_currency == "some payout_currency"
+    end
+
+    test "create_payout/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Rapyd.create_payout(@invalid_attrs)
+    end
+
+    test "update_payout/2 with valid data updates the payout" do
+      payout = payout_fixture()
+      update_attrs = %{beneficiary: "some updated beneficiary", beneficiary_entity_type: "some updated beneficiary_entity_type", payout_amount: 456.7, payout_currency: "some updated payout_currency"}
+
+      assert {:ok, %Payout{} = payout} = Rapyd.update_payout(payout, update_attrs)
+      assert payout.beneficiary == "some updated beneficiary"
+      assert payout.beneficiary_entity_type == "some updated beneficiary_entity_type"
+      assert payout.payout_amount == 456.7
+      assert payout.payout_currency == "some updated payout_currency"
+    end
+
+    test "update_payout/2 with invalid data returns error changeset" do
+      payout = payout_fixture()
+      assert {:error, %Ecto.Changeset{}} = Rapyd.update_payout(payout, @invalid_attrs)
+      assert payout == Rapyd.get_payout!(payout.id)
+    end
+
+    test "delete_payout/1 deletes the payout" do
+      payout = payout_fixture()
+      assert {:ok, %Payout{}} = Rapyd.delete_payout(payout)
+      assert_raise Ecto.NoResultsError, fn -> Rapyd.get_payout!(payout.id) end
+    end
+
+    test "change_payout/1 returns a payout changeset" do
+      payout = payout_fixture()
+      assert %Ecto.Changeset{} = Rapyd.change_payout(payout)
+    end
+  end
+
+  describe "payouts" do
+    alias RapydFxExample.Rapyd.Payout
+
+    import RapydFxExample.RapydFixtures
+
+    @invalid_attrs %{beneficiary: nil, beneficiary_entity_type: nil, ewallet_id: nil, payout_amount: nil, payout_currency: nil}
+
+    test "list_payouts/0 returns all payouts" do
+      payout = payout_fixture()
+      assert Rapyd.list_payouts() == [payout]
+    end
+
+    test "get_payout!/1 returns the payout with given id" do
+      payout = payout_fixture()
+      assert Rapyd.get_payout!(payout.id) == payout
+    end
+
+    test "create_payout/1 with valid data creates a payout" do
+      valid_attrs = %{beneficiary: "some beneficiary", beneficiary_entity_type: "some beneficiary_entity_type", ewallet_id: "some ewallet_id", payout_amount: 120.5, payout_currency: "some payout_currency"}
+
+      assert {:ok, %Payout{} = payout} = Rapyd.create_payout(valid_attrs)
+      assert payout.beneficiary == "some beneficiary"
+      assert payout.beneficiary_entity_type == "some beneficiary_entity_type"
+      assert payout.ewallet_id == "some ewallet_id"
+      assert payout.payout_amount == 120.5
+      assert payout.payout_currency == "some payout_currency"
+    end
+
+    test "create_payout/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Rapyd.create_payout(@invalid_attrs)
+    end
+
+    test "update_payout/2 with valid data updates the payout" do
+      payout = payout_fixture()
+      update_attrs = %{beneficiary: "some updated beneficiary", beneficiary_entity_type: "some updated beneficiary_entity_type", ewallet_id: "some updated ewallet_id", payout_amount: 456.7, payout_currency: "some updated payout_currency"}
+
+      assert {:ok, %Payout{} = payout} = Rapyd.update_payout(payout, update_attrs)
+      assert payout.beneficiary == "some updated beneficiary"
+      assert payout.beneficiary_entity_type == "some updated beneficiary_entity_type"
+      assert payout.ewallet_id == "some updated ewallet_id"
+      assert payout.payout_amount == 456.7
+      assert payout.payout_currency == "some updated payout_currency"
+    end
+
+    test "update_payout/2 with invalid data returns error changeset" do
+      payout = payout_fixture()
+      assert {:error, %Ecto.Changeset{}} = Rapyd.update_payout(payout, @invalid_attrs)
+      assert payout == Rapyd.get_payout!(payout.id)
+    end
+
+    test "delete_payout/1 deletes the payout" do
+      payout = payout_fixture()
+      assert {:ok, %Payout{}} = Rapyd.delete_payout(payout)
+      assert_raise Ecto.NoResultsError, fn -> Rapyd.get_payout!(payout.id) end
+    end
+
+    test "change_payout/1 returns a payout changeset" do
+      payout = payout_fixture()
+      assert %Ecto.Changeset{} = Rapyd.change_payout(payout)
+    end
+  end
+
+  describe "payouts" do
+    alias RapydFxExample.Rapyd.Payout
+
+    import RapydFxExample.RapydFixtures
+
+    @invalid_attrs %{beneficiary: nil, beneficiary_entity_type: nil, ewallet_id: nil, payout_amount: nil, payout_currency: nil, payout_transaction: nil}
+
+    test "list_payouts/0 returns all payouts" do
+      payout = payout_fixture()
+      assert Rapyd.list_payouts() == [payout]
+    end
+
+    test "get_payout!/1 returns the payout with given id" do
+      payout = payout_fixture()
+      assert Rapyd.get_payout!(payout.id) == payout
+    end
+
+    test "create_payout/1 with valid data creates a payout" do
+      valid_attrs = %{beneficiary: "some beneficiary", beneficiary_entity_type: "some beneficiary_entity_type", ewallet_id: "some ewallet_id", payout_amount: 120.5, payout_currency: "some payout_currency", payout_transaction: "some payout_transaction"}
+
+      assert {:ok, %Payout{} = payout} = Rapyd.create_payout(valid_attrs)
+      assert payout.beneficiary == "some beneficiary"
+      assert payout.beneficiary_entity_type == "some beneficiary_entity_type"
+      assert payout.ewallet_id == "some ewallet_id"
+      assert payout.payout_amount == 120.5
+      assert payout.payout_currency == "some payout_currency"
+      assert payout.payout_transaction == "some payout_transaction"
+    end
+
+    test "create_payout/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Rapyd.create_payout(@invalid_attrs)
+    end
+
+    test "update_payout/2 with valid data updates the payout" do
+      payout = payout_fixture()
+      update_attrs = %{beneficiary: "some updated beneficiary", beneficiary_entity_type: "some updated beneficiary_entity_type", ewallet_id: "some updated ewallet_id", payout_amount: 456.7, payout_currency: "some updated payout_currency", payout_transaction: "some updated payout_transaction"}
+
+      assert {:ok, %Payout{} = payout} = Rapyd.update_payout(payout, update_attrs)
+      assert payout.beneficiary == "some updated beneficiary"
+      assert payout.beneficiary_entity_type == "some updated beneficiary_entity_type"
+      assert payout.ewallet_id == "some updated ewallet_id"
+      assert payout.payout_amount == 456.7
+      assert payout.payout_currency == "some updated payout_currency"
+      assert payout.payout_transaction == "some updated payout_transaction"
+    end
+
+    test "update_payout/2 with invalid data returns error changeset" do
+      payout = payout_fixture()
+      assert {:error, %Ecto.Changeset{}} = Rapyd.update_payout(payout, @invalid_attrs)
+      assert payout == Rapyd.get_payout!(payout.id)
+    end
+
+    test "delete_payout/1 deletes the payout" do
+      payout = payout_fixture()
+      assert {:ok, %Payout{}} = Rapyd.delete_payout(payout)
+      assert_raise Ecto.NoResultsError, fn -> Rapyd.get_payout!(payout.id) end
+    end
+
+    test "change_payout/1 returns a payout changeset" do
+      payout = payout_fixture()
+      assert %Ecto.Changeset{} = Rapyd.change_payout(payout)
+    end
+  end
 end

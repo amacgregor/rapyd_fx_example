@@ -1,0 +1,5 @@
+<h1>Edit Payout</h1>
+
+<%= render "form.html", Map.put(assigns, :action, Routes.payout_path(@conn, :update, @payout)) %>
+
+<span><%= link "Back", to: Routes.payout_path(@conn, :index) %></span>

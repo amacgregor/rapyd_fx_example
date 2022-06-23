@@ -114,9 +114,16 @@ defmodule RapydFxExampleWeb.BeneficiaryController do
         first_name: params["first_name"],
         last_name: params["last_name"],
         country: "CA",
+        city: "Toronto",
+        address: "123 Fake Street",
+        state: "Ontario",
+        postcode: "M6C2R8",
         currency: params["currency"],
         category: "bank",
-        entity_type: "individual"
+        entity_type: "individual",
+        payment_type: "priority",
+        account_number: "111111111111",
+        bic_swift: "11111111"
       }
       |> Jason.encode()
 

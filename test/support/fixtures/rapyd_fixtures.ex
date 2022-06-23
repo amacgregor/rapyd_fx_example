@@ -36,4 +36,58 @@ defmodule RapydFxExample.RapydFixtures do
 
     beneficiary
   end
+
+  @doc """
+  Generate a payout.
+  """
+  def payout_fixture(attrs \\ %{}) do
+    {:ok, payout} =
+      attrs
+      |> Enum.into(%{
+        beneficiary: "some beneficiary",
+        beneficiary_entity_type: "some beneficiary_entity_type",
+        payout_amount: 120.5,
+        payout_currency: "some payout_currency"
+      })
+      |> RapydFxExample.Rapyd.create_payout()
+
+    payout
+  end
+
+  @doc """
+  Generate a payout.
+  """
+  def payout_fixture(attrs \\ %{}) do
+    {:ok, payout} =
+      attrs
+      |> Enum.into(%{
+        beneficiary: "some beneficiary",
+        beneficiary_entity_type: "some beneficiary_entity_type",
+        ewallet_id: "some ewallet_id",
+        payout_amount: 120.5,
+        payout_currency: "some payout_currency"
+      })
+      |> RapydFxExample.Rapyd.create_payout()
+
+    payout
+  end
+
+  @doc """
+  Generate a payout.
+  """
+  def payout_fixture(attrs \\ %{}) do
+    {:ok, payout} =
+      attrs
+      |> Enum.into(%{
+        beneficiary: "some beneficiary",
+        beneficiary_entity_type: "some beneficiary_entity_type",
+        ewallet_id: "some ewallet_id",
+        payout_amount: 120.5,
+        payout_currency: "some payout_currency",
+        payout_transaction: "some payout_transaction"
+      })
+      |> RapydFxExample.Rapyd.create_payout()
+
+    payout
+  end
 end
