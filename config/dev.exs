@@ -5,7 +5,7 @@ config :rapyd_fx_example, RapydFxExample.Repo,
   username: "postgres",
   password: "postgres",
   hostname: "localhost",
-  port: 5433,
+  port: 5432,
   database: "rapyd_fx_example_dev",
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
